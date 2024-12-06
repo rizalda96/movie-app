@@ -1,0 +1,11 @@
+{
+  "include": ["./vite.config.*", "./src/**/*", "./src/**/*.vue", "./typed-router.d.ts"],
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"],
+      "@images/*": ["./src/assets/images/*"],
+      "@styles/*": ["./src/assets/styles/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist"]
+}
