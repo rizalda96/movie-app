@@ -42,12 +42,15 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
       '@images': fileURLToPath(new URL('./src/assets/images/', import.meta.url)),
       '@styles': fileURLToPath(new URL('./src/assets/styles/', import.meta.url)),
+      '@components': fileURLToPath(new URL('./src/components/', import.meta.url)),
+      '@views': fileURLToPath(new URL('./src/views/', import.meta.url)),
     },
   },
   build: {
     chunkSizeWarningLimit: 5000,
   },
   optimizeDeps: {
+    exclude: ['@headlessui/vue'],
     entries: [
       './src/**/*.vue',
     ],

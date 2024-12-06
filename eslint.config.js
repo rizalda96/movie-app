@@ -22,6 +22,20 @@ export default [
     }
   },
 
+  {
+    extends: [
+      '.eslintrc-auto-import.json',
+      'plugin:vue/vue3-recommended',
+      'plugin:import/recommended',
+      'plugin:promise/recommended',
+      'plugin:sonarjs/recommended',
+      'plugin:case-police/recommended',
+      'plugin:regexp/recommended',
+
+      // 'plugin:unicorn/recommended',
+    ],
+  },
+
   js.configs.recommended,
   ...pluginVue.configs['flat/essential'],
   skipFormatting,
