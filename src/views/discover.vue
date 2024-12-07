@@ -18,7 +18,7 @@
   <div class="bg-gray-900 relative">
     <div class="p-6 lg:px-8">
       <div class="grid grid-cols-5 gap-5">
-        <MovieCard v-for="movie in 10" :key="movie" />
+        <MovieCard v-for="movie in 10" :key="movie" class="relative -top-28" />
       </div>
     </div>
   </div>

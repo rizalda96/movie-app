@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col relative -top-28">
+  <div class="flex flex-col">
     <div class="group relative w-56 h-80 overflow-hidden bg-gray-900 rounded-lg">
       <img
         src="https://picsum.photos/800/600"

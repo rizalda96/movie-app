@@ -4,10 +4,10 @@
     <header class="inset-x-0 top-0 z-50">
       <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div class="flex lg:flex gap-x-20 items-center">
-          <a href="#" class="-m-1.5 p-1.5">
+          <router-link :to="{ name: 'root' }" class="-m-1.5 p-1.5">
             <span class="sr-only">Movie Time</span>
             <img class="h-8 w-auto" src="@images/logo.svg" alt="Logo Image" />
-          </a>
+          </router-link>
           <div class="min-w-[50vw]">
             <InputField
               id="search"
@@ -34,14 +34,14 @@
             <RectangleGroupIcon class="size-6" aria-hidden="true" />
             Categories
           </a>
-          <a
+          <router-link
             v-for="item in navigation"
             :key="item.name"
-            :href="item.href"
+            :to="item.to"
             class="text-sm/6 font-semibold text-white hover:text-gray-300"
           >
             {{ item.name }}
-          </a>
+          </router-link>
         </div>
       </nav>
       <Dialog class="lg:hidden" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
@@ -102,9 +102,9 @@ import {
 } from '@heroicons/vue/24/outline'
 
 const navigation = [
-  { name: 'Movies', href: '#' },
-  { name: 'TV Shows', href: '#' },
-  { name: 'Login', href: '#' },
+  { name: 'Movies', to: 'movie' },
+  { name: 'TV Shows', to: '#' },
+  { name: 'Login', to: '#' },
 ]
 
 const mobileMenuOpen = ref(false)

@@ -23,6 +23,7 @@
     "defineAsyncComponent": true,
     "defineComponent": true,
     "defineStore": true,
+    "definePage": true,
     "effectScope": true,
     "getActivePinia": true,
     "getCurrentInstance": true,
