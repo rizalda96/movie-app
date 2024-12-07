@@ -18,14 +18,30 @@
   <div class="bg-gray-900 relative">
     <div class="p-6 lg:px-8">
       <div class="grid grid-cols-5 gap-5">
-        <MovieCard v-for="movie in 10" :key="movie" class="relative -top-28" />
+        <MovieCard
+          v-if="store.discovers.length > 0"
+          v-for="movie in store.discovers"
+          :key="movie.imdbID"
+          :title="movie.Title"
+          :year="movie.Year"
+          :type="movie.Type"
+          :imdbId="movie.imdbID"
+          :posterUrl="movie.Poster"
+          class="relative -top-28"
+        />
+        <div v-else class="col-span-5">
+          <p class="text-center text-white">No Movies Found</p>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
+import { useMovieStore } from '@/stores/movie.store'
 import MovieCard from '@components/MovieCard.vue'
+
+const store = useMovieStore()
 </script>
 
 <style lang="scss" scoped></style>

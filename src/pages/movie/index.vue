@@ -27,11 +27,23 @@
       </div>
       <div class="wrapper flex flex-col">
         <div class="grid grid-cols-4 gap-8">
-          <!-- class="relative -top-28" -->
-          <MovieCard v-for="movie in 10" :key="movie" />
+          <MovieCard
+            v-for="movie in store.movies"
+            :key="movie.imdbID"
+            :title="movie.Title"
+            :year="movie.Year"
+            :type="movie.Type"
+            :imdbId="movie.imdbID"
+            :posterUrl="movie.Poster"
+          />
         </div>
         <div class="flex justify-center mt-14">
-          <button class="bg-red-500 text-white px-4 py-2 rounded-full">Load More</button>
+          <button
+            class="bg-red-500 text-white px-4 py-2 rounded-full"
+            @click="fetchMovies(store.movies.length / 10 + 1)"
+          >
+            Load More
+          </button>
         </div>
       </div>
     </div>
@@ -39,11 +51,45 @@
 </template>
 
 <script setup>
+import { useMovieStore } from '@/stores/movie.store'
 import CheckboxField from '@/components/form/CheckboxField.vue'
 import SelectField from '@components/form/SelectField.vue'
 import MovieCard from '@components/MovieCard.vue'
 
 const countries = [{ value: '', label: 'Popularity' }]
+
+const $http = inject('http')
+const store = useMovieStore()
+onMounted(() => {
+  if (store.movies.length < 1) {
+    fetchMovies()
+  }
+})
+onUnmounted(() => (store.movies = []))
+
+const fetchMovies = async (onPage = 1) => {
+  try {
+    setTimeout(async () => {
+      const response = await $http.get(import.meta.env.VITE_OMDB_URL, {
+        params: {
+          s: 'batman',
+          page: onPage,
+        },
+      })
+
+      const { Response, Search } = response.data
+      if (Response === 'True') {
+        if (onPage === 1) {
+          store.setMovies(Search)
+        } else {
+          store.setMovies([...store.movies, ...Search])
+        }
+      }
+    }, 500)
+  } catch (error) {
+    alert(error)
+  }
+}
 </script>
 
 <style lang="scss" scoped></style>
