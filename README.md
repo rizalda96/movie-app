@@ -1,6 +1,10 @@
-# .
+# APP Movie sederhana
 
-This template should help get you started developing with Vue 3 in Vite.
+APP Movie sederhana dibuat dengan vue dan tailwind css
+
+# API
+
+http://www.omdbapi.com
 
 ## Recommended IDE Setup
 
@@ -11,6 +15,12 @@ This template should help get you started developing with Vue 3 in Vite.
 See [Vite Configuration Reference](https://vite.dev/config/).
 
 ## Project Setup
+
+### SET ENV
+
+```sh
+cp .env.example .env
+```
 
 ```sh
 npm install
